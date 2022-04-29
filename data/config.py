@@ -1,6 +1,10 @@
 from backbone import ResNetBackbone, VGGBackbone, ResNetBackboneGN, DarkNetBackbone
 from math import sqrt
 import torch
+import sys
+import os
+sys.path.append(os.path.abspath('data'))
+import dataset_objects
 
 # for making bounding boxes pretty
 COLORS = ((244,  67,  54),
@@ -126,6 +130,26 @@ dataset_base = Config({
     # provide a map from category_id -> index in class_names + 1 (the +1 is there because it's 1-indexed).
     # If not specified, this just assumes category ids start at 1 and increase sequentially.
     'label_map': None
+})
+
+train_images_path, train_annotations_path, valid_images_path, valid_annotations_path = dataset_objects.getDatasetObjects()
+
+offroad_dataset = dataset_base.copy({
+    'name': 'Offroad Dataset',
+
+    # Training images and annotations
+    'train_images': os.environ.get(train_images_path),
+    'train_info':   os.environ.get(train_annotations_path),
+
+    # Validation images and annotations.
+    'valid_images': os.environ.get(valid_images_path),
+    'valid_info': os.environ.get(valid_annotations_path),
+
+    # Whether or not to load GT. If this is False, eval.py quantitative evaluation won't work.
+    'has_gt': True,
+
+    # A list of names for each of you classes.
+    'class_names': ('isRoad'),
 })
 
 coco2014_dataset = dataset_base.copy({
@@ -657,11 +681,11 @@ yolact_base_config = coco_base_config.copy({
     'name': 'yolact_base',
 
     # Dataset stuff
-    'dataset': coco2017_dataset,
-    'num_classes': len(coco2017_dataset.class_names) + 1,
+    'dataset': offroad_dataset,
+    'num_classes': 1,
 
     # Image Size
-    'max_size': 550,
+    'max_size': 1280,
     
     # Training params
     'lr_steps': (280000, 600000, 700000, 750000),

@@ -1,3 +1,9 @@
+#JSON files
+train_images.json
+train_annotations.json
+valid_images.json
+valid_annotations.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
