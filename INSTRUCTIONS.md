@@ -19,7 +19,10 @@ By default, it will train on the offorad dataset.
  - Run one of the training commands below.
    - Note that you can press ctrl+c while training and it will save an `*_interrupt.pth` file at the current iteration.
    - All weights are saved in the `./weights` directory by default with the file name `<config>_<epoch>_<iter>.pth`.
-       - Note 
+       - Note that the following models will already be in the weights folder. DO NOT DELETE THEM!
+            - darknet53.pth
+            - resnet50-19c8e357.pth
+            - resnet101_reducedfc.pth 
 ```Shell
 # Trains using the base config with a batch size of 8 (the default).
 python train.py --config=yolact_base_config
