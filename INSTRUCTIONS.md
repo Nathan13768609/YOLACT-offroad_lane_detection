@@ -1,4 +1,8 @@
-## Make Preictions
+# ENV Variables
+### Dont forget to change the paths in the .env file.
+
+
+# Predictions
 ```Shell
 # Display qualitative results on the specified image.
 python eval.py --trained_model=weights/yolact_base_54_800000.pth --score_threshold=0.15 --top_k=15 --image=my_image.png
@@ -11,14 +15,11 @@ python eval.py --trained_model=weights/yolact_base_54_800000.pth --score_thresho
 ```
 
 # Training
-By default, we train on COCO. Make sure to download the entire dataset using the commands above.
- - To train, grab an imagenet-pretrained model and put it in `./weights`.
-   - For Resnet101, download `resnet101_reducedfc.pth` from [here](https://drive.google.com/file/d/1tvqFPd4bJtakOlmn-uIA492g2qurRChj/view?usp=sharing).
-   - For Resnet50, download `resnet50-19c8e357.pth` from [here](https://drive.google.com/file/d/1Jy3yCdbatgXa5YYIdTCRrSV0S9V5g1rn/view?usp=sharing).
-   - For Darknet53, download `darknet53.pth` from [here](https://drive.google.com/file/d/17Y431j4sagFpSReuPNoFcj9h7azDTZFf/view?usp=sharing).
+By default, it will train on the offorad dataset.
  - Run one of the training commands below.
    - Note that you can press ctrl+c while training and it will save an `*_interrupt.pth` file at the current iteration.
    - All weights are saved in the `./weights` directory by default with the file name `<config>_<epoch>_<iter>.pth`.
+       - Note 
 ```Shell
 # Trains using the base config with a batch size of 8 (the default).
 python train.py --config=yolact_base_config
