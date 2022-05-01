@@ -1,0 +1,1 @@
+python train.py --config=yolact_base_config --cuda --batch_size=30 --save_folder=C:/Users/Nathan/Documents/GitHub/YOLACT-offroad_lane_detection/weights --log_folder=C:/Users/Nathan/Documents/GitHub/YOLACT-offroad_lane_detection/training_logs --save_interval=1 --validation_epoch=1

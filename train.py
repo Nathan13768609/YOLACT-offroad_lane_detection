@@ -121,6 +121,7 @@ loss_types = ['B', 'C', 'M', 'P', 'D', 'E', 'S', 'I']
 
 if torch.cuda.is_available():
     if args.cuda:
+        torch.cuda.empty_cache()
         torch.set_default_tensor_type('torch.cuda.FloatTensor')
     if not args.cuda:
         print("WARNING: It looks like you have a CUDA device, but aren't " +

@@ -119,6 +119,7 @@ def build_JSON_file(jsonFilename):
         json_object = build_annoations_object(VALID_IMAGE_FILES, VALID_MASK_FILES, VALID_MASKS_PATH)
         
     # write to a JSON file 
+    print(f"Building {jsonFilename[:-5]} JSON file for")
     newFilepath = os.path.abspath(os.path.join('data', jsonFilename))
     with open(newFilepath, "w") as file:
         json.dump(json_object, file)

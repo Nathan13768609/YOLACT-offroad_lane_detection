@@ -100,6 +100,12 @@ ENV/
 # weights
 weights/
 
+# training_logs
+training_logs/
+
+# train command txt
+train_command.txt
+
 #DS_Store
 .DS_Store
 

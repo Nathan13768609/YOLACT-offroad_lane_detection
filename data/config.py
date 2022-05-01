@@ -724,7 +724,7 @@ yolact_base_config = coco_base_config.copy({
 
     'crowd_iou_threshold': 0.7,
 
-    'use_semantic_segmentation_loss': True,
+    'use_semantic_segmentation_loss': False,
 })
 
 yolact_im400_config = yolact_base_config.copy({
